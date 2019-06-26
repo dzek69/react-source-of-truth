@@ -1,0 +1,23 @@
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "browsers": [
+                        "> 3%"
+                    ]
+                },
+                "useBuiltIns": "entry"
+            }
+        ],
+        "@babel/preset-react"
+    ],
+    "env": {
+        "testing": {
+            "plugins": [
+                "rewire"
+            ]
+        }
+    }
+}
