@@ -1,6 +1,8 @@
 /.idea/
+/.fusebox/
 /docs/
 /dist/
+/dist-example/
 /node_modules/
 
 /*.tgz

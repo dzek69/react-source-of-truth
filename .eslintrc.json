@@ -4,7 +4,8 @@
         "@dzek69/eslint-config-react"
     ],
     "env": {
-        "node": true
+        "node": true,
+        "browser": true
     },
     "parserOptions": {
         "sourceType": "module"

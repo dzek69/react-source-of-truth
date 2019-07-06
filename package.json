@@ -1,6 +1,6 @@
 {
   "name": "react-source-of-truth",
-  "version": "1.0.0",
+  "version": "1.1.0-beta.1",
   "main": "src/index.js",
   "repository": "https://github.com/dzek69/react-source-of-truth.git",
   "author": "Jacek Nowacki",
@@ -12,7 +12,8 @@
     "prepublishOnly": "npm run test && npm run lint && npm run docs",
     "prepack": "npm run transpile",
     "lint": "eslint src/**/*.js src/*.js",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "start:dev": "node fuse"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -29,9 +30,14 @@
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.14.2",
     "fs-extra": "^7.0.1",
+    "fuse-box": "^3.7.1",
     "jsdoc": "^3.6.2",
     "mocha": "^5.2.0",
-    "must": "^0.13.4"
+    "must": "^0.13.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "typescript": "^3.5.2"
   },
   "dependencies": {
     "bottom-line-utils": "^0.6.0"

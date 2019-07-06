@@ -1,12 +1,19 @@
 /.idea/
+/.fusebox/
 /build-scripts/
 /test/
 /dist/**/*.spec.js
+/src/example
+/src/tsconfig.json
+/dist/example
+/dist-example
 
 /.babelrc
+/fuse.js
 /yarn.lock
 /*.tgz
 /*.log
 /.yarnclean
 /.editorconfig
 /.eslintrc.json
+/jsdoc.json
