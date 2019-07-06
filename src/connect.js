@@ -46,7 +46,7 @@ const connect = (mapStateToProps, mapUpdateToProps) => {
             }
 
             _updateMapUpdate() {
-                this._mapUpdate = mapUpdate(this.context.update, this.props, this.context.getState);
+                this._mapUpdate = mapUpdateToProps && mapUpdate(this.context.update, this.props, this.context.getState);
             }
 
             render() {
