@@ -1,6 +1,6 @@
 {
   "name": "react-source-of-truth",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "src/index.js",
   "repository": "https://github.com/dzek69/react-source-of-truth.git",
   "author": "Jacek Nowacki",
@@ -11,7 +11,7 @@
     "transpile": "node build-scripts/transpile && babel src -d dist --ignore spec.js",
     "prepublishOnly": "npm run test && npm run lint && npm run docs",
     "prepack": "npm run transpile",
-    "lint": "eslint src/**/*.js src/*.js",
+    "lint": "cross-env eslint 'src/**/*.js' 'src/*.js'",
     "lint:fix": "npm run lint -- --fix",
     "start:dev": "node fuse"
   },

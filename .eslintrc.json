@@ -33,7 +33,7 @@
         "react": {
             "createClass": "createReactClass",
             "pragma": "React",
-            "version": "15.0",
+            "version": "16.0",
             "flowVersion": "0.53"
         },
         "propWrapperFunctions": []
