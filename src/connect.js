@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import mapValues from "bottom-line-utils/mapValues";
 
 import { ProviderContext } from "./Provider";
@@ -53,13 +54,23 @@ const connect = (mapStateToProps, mapUpdateToProps) => {
                 const stateProps = mapStateToProps ? mapStateToProps(this.context.data, this.props) : null;
                 const updateProps = mapUpdateToProps ? this.mapUpdateValue : null;
 
-                return <BaseComponent {...this.props} {...stateProps} {...updateProps} />;
+                const { _forwardedRef, ...props } = this.props;
+
+                return <BaseComponent {...props} {...stateProps} {...updateProps} ref={_forwardedRef} />;
             }
         }
         WithState.displayName = "WithState(" + (BaseComponent.displayName || BaseComponent.name) + ")";
         WithState.contextType = ProviderContext;
+        WithState.defaultProps = {
+            _forwardedRef: null,
+        };
+        WithState.propTypes = {
+            _forwardedRef: PropTypes.object,
+        };
 
-        return WithState;
+        return React.forwardRef((props, ref) => { // eslint-disable-line react/no-multi-comp
+            return <WithState {...props} _forwardedRef={ref} />;
+        });
     };
 };
 

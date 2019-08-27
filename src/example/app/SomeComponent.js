@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 import Connected from "./Connected.container";
 
 class SomeComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.publicValue = 123;
+    }
+
     componentDidMount() {
         setInterval(() => {
             this.props.setUpper(this.props.upper + 1);
