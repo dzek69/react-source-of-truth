@@ -5,8 +5,11 @@ import { render } from "react-dom";
 
 import App from "./app/App";
 
-const root = document.createElement("div");
-root.id = "root";
-document.body.appendChild(root);
+const root = document.getElementById("root");
+if (window.loaded) {
+    render("", root);
+}
 
 render(<App />, root);
+
+window.loaded = true;

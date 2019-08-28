@@ -1,18 +1,15 @@
-/* eslint-disable new-cap */
-
-const { FuseBox, WebIndexPlugin } = require("fuse-box");
-const fuse = FuseBox.init({
-    allowSyntheticDefaultImports: true,
+const { fusebox } = require("fuse-box");
+const fuse = fusebox({
+    // allowSyntheticDefaultImports: true,
     homeDir: "src",
-    target: "browser@es6",
+    entry: "example/start.jsx",
+    devServer: true,
+    webIndex: {
+        template: "src/example/index.html",
+    },
+    cache: false,
+    target: "browser",
     output: "dist-example/$name.js",
-    plugins: [WebIndexPlugin()],
+    // logging: { level: "verbose" },
 });
-fuse.dev(); // launch http server
-fuse
-    .bundle("app")
-    .instructions("> example/index.js")
-    .hmr()
-    .watch();
-
-fuse.run();
+fuse.runDev();
