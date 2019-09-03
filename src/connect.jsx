@@ -22,8 +22,9 @@ const connect = (mapStateToProps, mapUpdateToProps) => {
             return (...args) => {
                 const returnValue = fn(...args);
                 if (typeof returnValue === "function") {
-                    returnValue(getState);
+                    return returnValue(getState);
                 }
+                return returnValue;
             };
         });
     };
