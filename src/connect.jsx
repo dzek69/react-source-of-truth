@@ -69,9 +69,11 @@ const connect = (mapStateToProps, mapUpdateToProps) => {
             _forwardedRef: PropTypes.object,
         };
 
-        return React.forwardRef((props, ref) => { // eslint-disable-line react/no-multi-comp
+        const WithStateAndRef = React.forwardRef((props, ref) => { // eslint-disable-line react/no-multi-comp
             return <WithState {...props} _forwardedRef={ref} />;
         });
+        WithStateAndRef.displayName = "WithState+ref(" + (BaseComponent.displayName || BaseComponent.name) + ")";
+        return WithStateAndRef;
     };
 };
 
