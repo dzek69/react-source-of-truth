@@ -10,9 +10,14 @@ class SomeComponent extends Component {
     }
 
     componentDidMount() {
-        setInterval(() => {
-            this.props.setUpper(this.props.upper + 1);
+        this._int = setInterval(() => {
+            console.info("returned value from standard updating method", this.props.setUpper(this.props.upper + 1));
+            console.info("returned value from `thunk` updating method", this.props.doSomething());
         }, 1000); // eslint-disable-line no-magic-numbers
+    }
+
+    componentWillUnmount() {
+        clearInterval(this._int);
     }
 
     render() {
@@ -29,6 +34,7 @@ class SomeComponent extends Component {
 }
 
 SomeComponent.propTypes = {
+    doSomething: PropTypes.func.isRequired,
     setUpper: PropTypes.func.isRequired,
     upper: PropTypes.number.isRequired,
 };

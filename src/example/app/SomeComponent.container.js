@@ -10,7 +10,13 @@ const mapState = (state, ownProps) => {
 
 const mapUpdate = (update, ownProps) => {
     return {
-        setUpper: value => update("upper", value),
+        setUpper: value => {
+            update("upper", value);
+            return "test value, could be a Promise";
+        },
+        doSomething: value => getState => {
+            return "i did nothing, but still returned a value";
+        },
     };
 };
 

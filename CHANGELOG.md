@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 - nothing yet
 
+## [2.1.1] - 2019-09-04
+### Fixed
+- bad component display name because of ref forwarding
+
+## [2.1.0] - 2019-09-03
+### Changed
+- if updater function returns a value it is now accessible when this function is called
+
 ## [2.0.0] - 2019-08-28
 ### Fixed
 - dev deps audit warnings
