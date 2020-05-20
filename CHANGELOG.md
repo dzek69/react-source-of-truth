@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 - nothing yet
 
+## [3.0.0-alpha.0] - 2020-05-20
+### Added
+- TypeScript typings
+
 ## [2.1.1] - 2019-09-04
 ### Fixed
 - bad component display name because of ref forwarding
