@@ -42,5 +42,5 @@ declare module "react-source-of-truth" {
   export function connect<S, P, SP extends keyof P, UP extends keyof P>(
     mapState: ((state: S, ownProps: Omit<P, SP | UP>) => Pick<P, SP>) | null,
     mapUpdate: ((update: UpdateFn, ownProps: Omit<P, SP | UP>) => MapUpdate<S, Pick<P, UP>>) | null
-  ): (Component: React.ComponentType<P>) => React.ComponentType<P>
+  ): (Component: React.ComponentType<P>) => React.ComponentType<Omit<P, SP | UP>>
 }
