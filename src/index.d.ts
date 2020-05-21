@@ -7,7 +7,7 @@ declare module "react-source-of-truth" {
     [key: string]: any;
   }
 
-  type UpdateFn = (key: string, value: any) => void;
+  export type UpdateFn = (key: string, value: any) => void;
 
   type ReplaceFn = () => void;
 
@@ -21,7 +21,7 @@ declare module "react-source-of-truth" {
   }
 
   type ProviderProps<S> = {
-    defaultData: S;
+    defaultState: S;
     children: React.ReactNode;
   }
 
