@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 - nothing yet
 
-## [3.0.0-alpha.0] - 2020-05-20
+## [3.0.0-alpha.1] - 2020-05-21
 ### Added
 - TypeScript typings
 

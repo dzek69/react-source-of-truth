@@ -1193,10 +1193,10 @@ body-parser@1.19.0:
     raw-body "2.4.0"
     type-is "~1.6.17"
 
-bottom-line-utils@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.npmjs.org/bottom-line-utils/-/bottom-line-utils-0.6.0.tgz#dd58e367003bfe5899370e1609ddc9eb3ab985d9"
-  integrity sha512-pMXNYk0ta5M38gx+F7Qz0AkaFxH/dUvB4er1yVNlxtqHdHCgLXYzCzhkU7wODG9XNmHlHrUNds9YFD6MGwW68Q==
+bottom-line-utils@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/bottom-line-utils/-/bottom-line-utils-0.8.0.tgz#fe12da7721a9dc3bf445f7fdb8ad8f383eab90cc"
+  integrity sha512-UV/9WlAOhEbMDSvU1oYUwflgeyoy/n8uEt33SJK135XCR/MG9pCkns9ihxu6J/sjny/PzwhKK10QgK6nXYDg4w==
 
 bowser@^2.0.0-beta.3:
   version "2.5.3"
