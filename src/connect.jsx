@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import mapValues from "bottom-line-utils/mapValues";
+import { mapValues } from "bottom-line-utils";
 
 import { ProviderContext } from "./Provider";
 

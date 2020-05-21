@@ -1,6 +1,6 @@
 import React, { createContext, Component } from "react";
 import PropTypes from "prop-types";
-import setImmutable from "bottom-line-utils/setImmutable";
+import { setImmutable } from "bottom-line-utils";
 
 const defaultData = {};
 const defaultMethod = () => {
