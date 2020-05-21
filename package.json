@@ -1,6 +1,6 @@
 {
   "name": "react-source-of-truth",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.3",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "repository": "https://github.com/dzek69/react-source-of-truth.git",
