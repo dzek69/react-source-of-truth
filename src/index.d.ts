@@ -21,7 +21,7 @@ declare module "react-source-of-truth" {
   }
 
   type ProviderProps<S> = {
-    defaultData: S;
+    defaultState: S;
     children: React.ReactNode;
   }
 
