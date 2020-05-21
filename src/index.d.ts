@@ -7,7 +7,7 @@ declare module "react-source-of-truth" {
     [key: string]: any;
   }
 
-  type UpdateFn = (key: string, value: any) => void;
+  export type UpdateFn = (key: string, value: any) => void;
 
   type ReplaceFn = () => void;
 
