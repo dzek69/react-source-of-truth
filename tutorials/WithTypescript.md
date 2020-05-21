@@ -44,14 +44,14 @@ import MyComponent, { MyComponentProps } from "./MyComponent";
 type StateProps = "name" | "surname";
 type UpdateProps = "updateName" | "deleteName";
 
-const mapState = (state: AppStore, ownProps: Pick<MyComponentProps, StateProps>) => {
+const mapState = (state: AppStore, ownProps: Omit<MyComponentProps, StateProps | UpdateProps>): Pick<MyComponentProps, StateProps> => {
     return {
        name: state.user.name,
        surname: state.user.surname
     };
 };
 
-const mapUpdate = (update: (key: string, value: any) => void, ownProps: Pick<MyComponentProps, UpdateProps>) => {
+const mapUpdate = (update: (key: string, value: any) => void, ownProps: Omit<MyComponentProps, StateProps | UpdateProps>): Pick<MyComponentProps, UpdateProps> => {
     return {
         deleteName: () => update("user.name", null),
         updateName: newName => update("user.name", newName),
@@ -113,7 +113,7 @@ import MyComponent, { MyComponentProps } from "./MyComponent";
 
 type UpdateProps = "updateName" | "deleteName";
 
-const mapUpdate = (update: (key: string, value: any) => void, ownProps: Pick<MyComponentProps, UpdateProps>) => {
+const mapUpdate = (update: (key: string, value: any) => void, ownProps: Omit<MyComponentProps, StateProps | UpdateProps>): Pick<MyComponentProps, UpdateProps> => {
     return {
         deleteName: () => update("name", null),
         updateName(newItem: string) {
@@ -150,7 +150,7 @@ interface AppStore {
   value: string;
 }
 
-function mapUpdate(update: (key: string, value: any) => void, ownProps: Pick<Props, never>) {
+function mapUpdate(update: (key: string, value: any) => void, ownProps: Pick<Props, never>): Props {
   return {
     setVoid: (a: string): void => {
       update("value", a)
