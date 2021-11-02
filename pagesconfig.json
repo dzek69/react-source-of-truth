@@ -1,0 +1,17 @@
+{
+    "groups": [
+        {
+            "title": "Tutorials",
+            "pages": [
+                {
+                    "title": "Usage",
+                    "source": "./tutorials/Usage.outdated.md"
+                },
+                {
+                    "title": "With TypeScript",
+                    "source": "./tutorials/WithTypescript.outdated.md"
+                }
+            ]
+        }
+    ]
+}

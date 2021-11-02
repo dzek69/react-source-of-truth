@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 - nothing yet
 
+## [4.0.0-alpha.1] - 2021-11-02
+### Added
+- hooks support
+- direct access to the underlying state store (`Truth` instance`) for all your non-React needs
+### Changed
+- General API changes, you need to use a factory function to get Provider and connect (and new hooks)
+- `connect` no longer returns a method which takes a component but requires a component as a first argument and returns
+new component instead
+- instead of passing default state to Provider you need to create a `Truth` instance
+
 ## [3.0.0-alpha.3] - 2020-05-21
 ### Added
 - TypeScript typings

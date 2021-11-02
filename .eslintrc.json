@@ -1,20 +1,26 @@
 {
+    "root": true,
     "extends": [
         "@dzek69/eslint-config-base",
+        "@dzek69/eslint-config-typescript",
         "@dzek69/eslint-config-react"
     ],
     "env": {
-        "node": true,
-        "browser": true
+        "node": true
     },
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.lint.json"
     },
+    "ignorePatterns": [],
     "overrides": [
         {
-            "files": ["src/*.spec.js", "src/**/*.spec.js"],
+            "files": [
+                "src/*.spec.*",
+                "src/**/*.spec.*"
+            ],
             "env": {
-                "mocha": true
+                "jest": true
             },
             "rules": {
                 "func-names": "off",
@@ -22,19 +28,23 @@
                 "max-lines": "off",
                 "max-lines-per-function": "off",
                 "max-statements": "off",
-                "no-empty-function": "off",
-                "no-magic-numbers": "off",
-                "no-unused-labels": "off",
-                "react/no-multi-comp": "off"
+                "@typescript-eslint/no-empty-function": "off",
+                "@typescript-eslint/no-magic-numbers": "off",
+                "@typescript-eslint/no-unsafe-call": "off",
+                "@typescript-eslint/no-unsafe-member-access": "off",
+                "no-unused-labels": "off"
             }
         }
     ],
+    "rules": {
+        "react/prop-types": "off"
+    },
     "settings": {
         "react": {
             "createClass": "createReactClass",
             "pragma": "React",
-            "version": "16.0",
-            "flowVersion": "0.53"
+            "version": "detect",
+            "flowVersion": "detect"
         },
         "propWrapperFunctions": []
     }

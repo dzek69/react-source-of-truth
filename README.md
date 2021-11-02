@@ -2,36 +2,24 @@
 
 Simple `react-redux`-alike library for handling single-source-of-truth state in your React Application.
 
+# WARNING
+
+> You are looking at rewritten library with new ideas in alpha state. Beware of API changes before stabilizing.
+>
+> Outdated docs ahead!
+
 ## Features:
 
-- the simplest possible api to pass deep state to your components
-- the simplest possible api to update deep state from your components
-- based on well-known `react-redux` `connect` and `Provider`
-- no actions, no reducers
-- no need to re-built half of your state to keep objects immutability rule of React, just pass a path to a value when
-updating
-- Less than 2,5kB of source code, 1121 bytes minified
-gzipped
+- the simplest single source of truth management for your React application,
+- no actions, no reducers, just select the data you need and update the deep plain object when needed
+- full TypeScript support (except legacy `connect` method)
+- both hooks & legacy React support
+- legacy code is based on well-known `react-redux`'s `connect`
+- no need to re-built half of your state to keep objects immutability rule of React thanks to awesome `immutable-assign`
 
 ## Usage:
 
 See: [Docs][docs]
-
-## FAQ:
-
-> Why use `connect` instead of passing whole state all the time?
-- For performance. You are able to re-render your components only when data actually used by these component changes.
-
-> How to get current state when updating it?
-- Something like redux-thunk is built-in into `react-source-of-truth`. Your updating function should return another
-function. It will be called with `getState` method. See [Docs][docs] for details.
-
-> How to use `update` to add a value to an array?
-- Currently you have to do it manually. See [Docs][docs].
-
-## TODO:
-
-- unit tests
 
 ## License:
 
