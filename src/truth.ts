@@ -28,7 +28,9 @@ class Truth<State> {
     }
 
     private _notify() {
-        this._listeners.forEach(fn => { fn(this._state); });
+        // Spreading listeners to make sure every listener is called for a specific update, even if one of the listeners
+        // Will remove another
+        [...this._listeners].forEach(fn => { fn(this._state); });
     }
 
     public update = <TProp>(deepSelector: (state: State) => TProp, setter: (oldVal: TProp) => TProp) => {

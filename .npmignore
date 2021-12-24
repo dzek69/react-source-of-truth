@@ -12,3 +12,10 @@
 /.editorconfig
 /tsconfig.*
 /.eslintrc.json
+
+/dist/demo
+/dist/pages
+/esm/demo
+/esm/pages
+/src/demo
+/src/pages

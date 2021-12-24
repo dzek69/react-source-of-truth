@@ -10,6 +10,7 @@ import { mapValues } from "bottom-line-utils";
 import type { PropsWithChildren } from "react";
 
 import type { Truth } from "./truth";
+import type { MapUpdate } from "./types";
 import { shallowDiffers } from "./shallowDiffers.js";
 
 interface State<StoreState> {
@@ -18,18 +19,6 @@ interface State<StoreState> {
     getState: Truth<StoreState>["getState"];
     replace: Truth<StoreState>["replace"];
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyFunc = (...args: any[]) => any; // @TODO?
-type GetStateFn<S> = () => S;
-
-type MapUpdateGetStateFn<SingleUpdateProp, AppState> = SingleUpdateProp extends AnyFunc
-    ? (...params: Parameters<SingleUpdateProp>) => (getState: GetStateFn<AppState>) => ReturnType<SingleUpdateProp>
-    : SingleUpdateProp;
-
-type MapUpdate<AppState, UpdateProps> = {
-    [K in keyof UpdateProps]: UpdateProps[K] | MapUpdateGetStateFn<UpdateProps[K], AppState>;
-};
 
 const initialMethod = () => {
     throw new Error("Source of truth provider not found");
@@ -41,8 +30,9 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
     ProviderContext: React.Context<State<StoreState>>;
     store: Truth<StoreState>;
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
-    useTruthSelector: <TProp extends unknown>(selector: (s: StoreState) => TProp) => TProp;
+    useTruthSelector: <TProp extends unknown>(selector: (s: StoreState) => TProp, deps?: unknown[]) => TProp;
     useTruthState: () => StoreState;
+    useTruthStore: () => Truth<StoreState>;
     useTruthUpdate: () => Truth<StoreState>["update"];
     connect: <ConnectedComponentProps,
         PropsFromState extends keyof ConnectedComponentProps,
@@ -110,12 +100,15 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
         }
     }
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
-    const useTruthSelector = <TProp extends unknown>(selector: (state: StoreState) => TProp) => {
+    const useTruthSelector = <TProp extends unknown>(
+        selector: (state: StoreState) => TProp, ...args: [unknown[]] | []
+    ) => {
         const initState = selector(store.getState());
 
         const [cache] = useState<{ prev: TProp }>({ prev: initState });
         const [s, ss] = useState<TProp>(initState);
 
+        const deps = args.length === 0 ? [] : args[0];
         useEffect(() => {
             const listener = (newState: StoreState) => {
                 const next = selector(newState);
@@ -129,7 +122,7 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
             store.addChangeListener(listener);
 
             return () => { store.removeChangeListener(listener); };
-        }, [selector]);
+        }, deps);
 
         return s;
     };
@@ -140,6 +133,8 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
     };
 
     const useTruthUpdate = () => store.update;
+
+    const useTruthStore = () => store;
 
     // eslint-disable-next-line max-lines-per-function
     const connect = <
@@ -243,13 +238,14 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
         Provider,
         ProviderContext,
         store,
+        // @ts-expect-error it must be like that - public api should "see" only one arg to optionally give but I need
+        // to read if it was given or not
         useTruthSelector,
         useTruthState,
         useTruthUpdate,
+        useTruthStore,
         connect,
     };
 };
 
-export {
-    createTruth,
-};
+export { createTruth };

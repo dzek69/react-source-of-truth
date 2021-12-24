@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 - nothing yet
 
-## [4.0.0-alpha.1] - 2021-11-02
+## [4.0.0-alpha.3] - 2021-12-24
 ### Added
 - hooks support
 - direct access to the underlying state store (`Truth` instance`) for all your non-React needs
