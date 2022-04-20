@@ -4,12 +4,12 @@
             "title": "Tutorials",
             "pages": [
                 {
-                    "title": "Usage",
-                    "source": "./tutorials/Usage.outdated.md"
+                    "title": "Basic concepts",
+                    "source": "./tutorials/BasicConcepts.md"
                 },
                 {
-                    "title": "With TypeScript",
-                    "source": "./tutorials/WithTypescript.outdated.md"
+                    "title": "Legacy API usage (outdated)",
+                    "source": "./tutorials/Usage.outdated.md"
                 }
             ]
         }

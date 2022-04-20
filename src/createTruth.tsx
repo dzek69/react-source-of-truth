@@ -5,6 +5,7 @@ import React, {
     useContext,
     useEffect,
     useState,
+    useMemo,
 } from "react";
 import { mapValues } from "bottom-line-utils";
 import type { PropsWithChildren } from "react";
@@ -99,16 +100,20 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
             );
         }
     }
+
+    const useTruthState = () => {
+        const p = useContext(ProviderContext);
+        return p.data;
+    };
+
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
     const useTruthSelector = <TProp extends unknown>(
-        selector: (state: StoreState) => TProp, ...args: [unknown[]] | []
+        selector: (state: StoreState) => TProp, ...args: [unknown[] | undefined] | []
     ) => {
-        const initState = selector(store.getState());
+        const deps = args.length === 0 ? [] : (args[0] ?? []);
+        const [cache] = useState<{ prev: TProp }>(() => ({ prev: selector(store.getState()) }));
+        const [s, ss] = useState<unknown>({});
 
-        const [cache] = useState<{ prev: TProp }>({ prev: initState });
-        const [s, ss] = useState<TProp>(initState);
-
-        const deps = args.length === 0 ? [] : args[0];
         useEffect(() => {
             const listener = (newState: StoreState) => {
                 const next = selector(newState);
@@ -116,7 +121,7 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
                     return;
                 }
                 cache.prev = next;
-                ss(next);
+                ss({});
             };
 
             store.addChangeListener(listener);
@@ -124,12 +129,9 @@ const createTruth = <StoreState extends unknown>(store: Truth<StoreState>): {
             return () => { store.removeChangeListener(listener); };
         }, deps);
 
-        return s;
-    };
-
-    const useTruthState = () => {
-        const p = useContext(ProviderContext);
-        return p.data;
+        return useMemo(() => {
+            return selector(store.getState());
+        }, [s, ...deps]);
     };
 
     const useTruthUpdate = () => store.update;

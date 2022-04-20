@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 - nothing yet
 
+## [4.0.0-beta.1] - 2022-04-20
+### Added
+- basic docs with demo app
+### Fixed
+- Invalid state returned when dependency of a selector function changed without changing the store state
+### Dev
+- deps updated
+- fixed TS complaining on module.scss files on demo
+- don't publish .next folder
+
 ## [4.0.0-alpha.3] - 2021-12-24
 ### Added
 - hooks support

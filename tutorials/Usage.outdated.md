@@ -1,3 +1,8 @@
+# BEWARE!!!
+
+> This tutorial is outdated. It is describing legacy API, which changed a bit. This will be updated in the future and
+> it's left here because it may be still useful, even if partially invalid.
+
 # Basic usage
 
 You need three steps to use single source of truth in your app:
@@ -63,13 +68,13 @@ class MyComponent extends Component {
         super(props);
         this.load = this.load.bind(this);
     }
-    
+
     load() {
         api.load().then(user => { // imagine this is an api call
             this.props.updateName(user.name);
         })
     }
-    
+
     render() {
         return (
             <>
@@ -98,7 +103,7 @@ const defaultState = {
     list: [],
     updatesCounter: 1,
 };
-``` 
+```
 
 This is how connector would look like:
 ```javascript
@@ -112,7 +117,7 @@ const mapUpdate = (update, ownProps) => {
             return (getState) => {
                 const state = getState();
                 update("updatesCounter", state.updatesCounter + 1);
-                
+
                 const list = [...state.list];
                 list.push(newItem);
                 update("list", list);

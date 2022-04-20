@@ -56,7 +56,8 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src/"
+    "src/",
+    "next-env.d.ts"
   ],
   "exclude": [
     "src/**/*.spec.ts",
