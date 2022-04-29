@@ -6,6 +6,7 @@ const IndexComp = () => (
         <h2>Demos:</h2>
         <ul>
             <li><Link href={"/DocsApp"}>Demo app</Link></li>
+            <li><Link href={"/TodoApp"}>To-do app</Link></li>
         </ul>
 
         <h2>Development experiments:</h2>

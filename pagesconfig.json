@@ -8,8 +8,12 @@
                     "source": "./tutorials/BasicConcepts.md"
                 },
                 {
-                    "title": "Legacy API usage (outdated)",
-                    "source": "./tutorials/Usage.outdated.md"
+                    "title": "Advanced usage",
+                    "source": "./tutorials/AdvancedUsage.md"
+                },
+                {
+                    "title": "Keep that in mind",
+                    "source": "./tutorials/KeepThatInMind.md"
                 }
             ]
         }

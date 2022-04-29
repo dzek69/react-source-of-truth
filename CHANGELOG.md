@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 - nothing yet
 
+## [4.0.0] - 2022-04-29
+### Added
+- todomvc-like demo app
+- more docs
+
 ## [4.0.0-beta.1] - 2022-04-20
 ### Added
 - basic docs with demo app
